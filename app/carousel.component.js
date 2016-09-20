@@ -9,30 +9,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require('@angular/core');
+const pictures_service_1 = require('./pictures.service');
 let CarouselComponent = class CarouselComponent {
-    constructor() {
-        this.images = [];
+    constructor(picturesService) {
+        this.picturesService = picturesService;
         this.index = 0;
-        this.currentImg = "http://www.angulartypescript.com/wp-content/uploads/2016/03/car1.jpg";
-        this.images.push("http://www.angulartypescript.com/wp-content/uploads/2016/03/car1.jpg");
-        this.images.push("http://www.angulartypescript.com/wp-content/uploads/2016/03/car2.jpg");
-        this.images.push("http://www.angulartypescript.com/wp-content/uploads/2016/03/car3.jpg");
-        this.images.push("http://www.angulartypescript.com/wp-content/uploads/2016/03/car4.jpg");
-        this.images.push("http://www.angulartypescript.com/wp-content/uploads/2016/03/car5.jpg");
-        this.images.push("http://www.angulartypescript.com/wp-content/uploads/2016/03/car6.jpg");
+        this.pictures = picturesService.getPictures();
+        this.currentImg = this.pictures[0];
     }
     onClick() {
-        this.index = Math.floor(Math.random() * this.images.length);
-        this.currentImg = this.images[this.index];
+        this.index = Math.floor(Math.random() * this.pictures.length);
+        this.currentImg = this.pictures[this.index];
     }
 };
 CarouselComponent = __decorate([
     core_1.Component({
         selector: 'my-carousel',
-        template: `<h1>Picture number {{index}}</h1>
-    <img src={{currentImg}} style="margin:auto;" (click)="onClick()">`
+        template: `<h1>{{currentImg.legend}}</h1>
+    <img src={{currentImg.url}} style="margin:auto;" (click)="onClick()">`,
+        providers: [pictures_service_1.PicturesService]
     }), 
-    __metadata('design:paramtypes', [])
+    __metadata('design:paramtypes', [pictures_service_1.PicturesService])
 ], CarouselComponent);
 exports.CarouselComponent = CarouselComponent;
 //# sourceMappingURL=carousel.component.js.map
