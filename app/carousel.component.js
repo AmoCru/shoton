@@ -12,16 +12,22 @@ const core_1 = require('@angular/core');
 const pictures_service_1 = require('./pictures.service');
 let CarouselComponent = class CarouselComponent {
     constructor(picturesService) {
-        this.picturesService = picturesService;
         this.index = 0;
-        this.pictures = picturesService.getPictures();
-        this.currentImg = this.pictures[0];
+        this.picturesService = picturesService;
     }
     onClick() {
         this.index = Math.floor(Math.random() * this.pictures.length);
         this.currentImg = this.pictures[this.index];
     }
+    ngOnInit() {
+        this.pictures = this.picturesService.getPictures(this.userID);
+        this.currentImg = this.pictures[0];
+    }
 };
+__decorate([
+    core_1.Input(), 
+    __metadata('design:type', String)
+], CarouselComponent.prototype, "userID", void 0);
 CarouselComponent = __decorate([
     core_1.Component({
         selector: 'my-carousel',

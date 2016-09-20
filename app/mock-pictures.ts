@@ -32,3 +32,16 @@ export const PICTURES: Picture[] = [
         date: new Date(16,9,20,15,5,0)
     },
 ]
+
+export const PICTURES_SIMPLE: Picture[] = [
+    {
+        url: "http://www.angulartypescript.com/wp-content/uploads/2016/03/car5.jpg",
+        legend: "What a beautiful car 5",
+        date: new Date(16,9,20,15,5,0)
+    },
+    {
+        url: "http://www.angulartypescript.com/wp-content/uploads/2016/03/car6.jpg",
+        legend: "What a beautiful car 6",
+        date: new Date(16,9,20,15,5,0)
+    },
+]

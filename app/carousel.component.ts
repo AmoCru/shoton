@@ -1,6 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Picture} from './picture';
 import {PicturesService} from './pictures.service';
+import { OnInit } from '@angular/core';
 
 @Component ({
     selector:'my-carousel',
@@ -11,15 +12,16 @@ import {PicturesService} from './pictures.service';
 
 })
 
-export class CarouselComponent {
+export class CarouselComponent implements OnInit {
+    @Input() userID: string;
     pictures: Picture[];
     currentImg:Picture;
     index:number = 0;
+    picturesService: PicturesService
 
-    constructor(private picturesService: PicturesService)
+    constructor(picturesService: PicturesService)
     {
-        this.pictures = picturesService.getPictures();
-        this.currentImg = this.pictures[0];
+        this.picturesService = picturesService;
     }
 
     onClick()
@@ -28,5 +30,9 @@ export class CarouselComponent {
         this.currentImg=this.pictures[this.index];
     }
 
-
+    ngOnInit()
+    {
+        this.pictures = this.picturesService.getPictures(this.userID);
+        this.currentImg = this.pictures[0];
+    }
 }

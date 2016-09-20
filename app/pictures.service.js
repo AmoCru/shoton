@@ -11,8 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 const core_1 = require('@angular/core');
 const mock_pictures_1 = require('./mock-pictures');
 let PicturesService = class PicturesService {
-    getPictures() {
-        return mock_pictures_1.PICTURES;
+    getPictures(user) {
+        if (user === "Amaury")
+            return mock_pictures_1.PICTURES;
+        else
+            return mock_pictures_1.PICTURES_SIMPLE;
     }
 };
 PicturesService = __decorate([

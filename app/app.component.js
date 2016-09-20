@@ -10,13 +10,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 const core_1 = require('@angular/core');
 let AppComponent = class AppComponent {
+    constructor() {
+        this.currentUser = 'Amaury';
+    }
     clicked(event) {
     }
 };
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: `<my-carousel>Loading carousel...</my-carousel>`
+        template: `<h1>Welcome on ShotOn! {{currentUser}}</h1>
+					<p>ShotOn! enables you to trace the evolution of what you love and to share it with your friends and family.
+						Start your journey by clicking on the Register button!
+					</p>
+    <my-carousel [userID]="currentUser" >Loading carousel...</my-carousel>`
     }), 
     __metadata('design:paramtypes', [])
 ], AppComponent);

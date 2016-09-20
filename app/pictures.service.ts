@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
 
 import {Picture} from './picture';
-import {PICTURES} from './mock-pictures';
+import {PICTURES, PICTURES_SIMPLE} from './mock-pictures';
 
 @Injectable()
 export class PicturesService {
-    getPictures(): Picture[] {
-        return PICTURES;
+    getPictures(user: string): Picture[] {
+        if (user==="Amaury") return PICTURES;
+        else return PICTURES_SIMPLE;
     }
 }
