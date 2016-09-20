@@ -5,7 +5,8 @@ import {PicturesService} from './pictures.service';
 @Component ({
     selector:'my-carousel',
     template:`<h1>{{currentImg.legend}}</h1>
-    <img src={{currentImg.url}} style="margin:auto;" (click)="onClick()">`,
+    <img src={{currentImg.url}} style="margin:auto;" (click)="onClick()">
+    <h2>{{currentImg.date.getDate()}}/{{currentImg.date.getMonth()}}/{{currentImg.date.getYear()}}</h2>`,
     providers: [PicturesService]
 
 })
